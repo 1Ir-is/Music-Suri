@@ -69,6 +69,31 @@ const listMusic = [
       });
     });
   }
+
+   // set list song
+   async setSongs() {
+    songs.innerHTML = '';
+
+    for (let i = 0; i < listMusic.length; i++) {
+      const music = new Audio(`music/${listMusic[i].song}.mp3`);
+      const time = await this.getDuration(music);
+
+      songs.insertAdjacentHTML(
+        'beforeend',
+        `<div class="song-info">
+          <div class="left">
+            <span class="name-song">${listMusic[i].song}</span>
+            <span class="author">${listMusic[i].author}</span>
+          </div>
+          <div class="right">
+            <span class="minutes">${time}</span>
+          </div>
+        </div>`
+      );
+    }
+  }
+
+  
 }
 
 //format time
