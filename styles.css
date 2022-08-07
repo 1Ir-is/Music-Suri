@@ -1,0 +1,242 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    padding: 5rem 0;
+    font-size: 1.6rem;
+    min-height: 100vh;
+    background: #f5e0e5;
+}
+
+button{
+    outline: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.container{
+    max-width: 40rem;
+    background-color: #fdfbfc;
+    box-shadow: 0 5px 10px rgb(233, 233, 233);
+    border-radius: 10px;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.music-content{
+    padding: 3rem 3rem 5rem;
+    position: relative;
+    text-align: center;
+}
+
+.thumbnail-song{
+    border-radius: 50%;
+    width: 10rem;
+    height: 10rem;
+    overflow: hidden;
+    display: inline-block;
+    box-shadow: 0 5px 25px #e69f9f;
+    margin-top: 1rem;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.thumbnail-song::before{
+    width: 2rem;
+    background-color: #f5e0e5;
+    position: absolute;
+    height: 2rem;
+    top: 50%;
+    left: 50%;
+    content: "";
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 100;
+}
+
+.thumbnail-song img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.state {
+    color: rgb(247, 51, 51);
+    font-size: 1.8rem;
+  }
+  .info-song {
+    margin-top: 1.25rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  .song-name {
+    color: #524850;
+    font-weight: 700;
+    font-size: 2.4rem;
+  }
+  .info-song .author {
+    margin-top: 1rem;
+    font-size: 1.8rem;
+    color: #ada6aa;
+  }
+  .bar-song {
+    display: flex;
+    align-items: center;
+  }
+  .progress {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    width: 100%;
+    height: 1rem;
+    overflow: hidden;
+    position: relative;
+    border-radius: 5px;
+    background: #65fcce;
+    cursor: pointer;
+  }
+  .progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: rgb(243 60 110);
+  }
+  
+  .song-footer {
+    display: flex;
+    align-items: center;
+    margin-top: 4rem;
+    justify-content: center;
+  }
+  .back,
+  .forward {
+    border-radius: 50%;
+    width: 4rem;
+    color: #72646f;
+    height: 4rem;
+    font-size: 1.8rem;
+  }
+  
+  .play-song {
+    width: 5.5rem;
+    height: 5.5rem;
+    margin: 0 2rem;
+    background: #ffffff;
+    color: #736570;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgb(236, 186, 186);
+  }
+  i {
+    pointer-events: none;
+  }
+  .play-song i {
+    font-size: 1.8rem;
+  }
+  .play-song i.fa-play {
+    margin-left: 5px;
+  }
+  .play-list {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-end;
+    font-weight: 1.8rem;
+    font-weight: 700;
+    color: #524850;
+    margin-bottom: 3rem;
+  }
+  .play-list i {
+    margin-left: 1rem;
+  }
+  
+  .playlist-box {
+    background: rgb(255, 255, 255);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    border-radius: 10px;
+    padding: 3rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  .playlist-box.active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+
+  .list-song{
+    overflow-y: auto;
+    height: 30rem;
+    padding: 1rem;
+  }
+
+  .list-song, .song-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 6px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  }
+
+  .song-info:hover{
+    background: rgb(212, 212, 212);
+    border-color: transparent;
+  }
+
+  .left{
+    pointer-events: none;
+    flex: 1 0 70%;
+
+  }
+
+  .right{
+    pointer-events: none;
+    flex: 0 1 10rem;
+    text-align: right;
+
+  }
+
+  .left .author{
+    margin-top: 3px;
+    color: rgb(158, 148, 148);
+
+  }
+
+  .song-info, .left span{
+    display: block;
+  }
+
+  .playlist-box .header{
+    position: relative;
+    margin-bottom: 3rem;
+  }
+
+  .header .text{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: rgb(53, 53, 53);
+  }
