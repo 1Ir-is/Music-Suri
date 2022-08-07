@@ -112,7 +112,27 @@ const listMusic = [
   
     audio.pause();
   }
-
+  
+  // next song
+    nextSong() {
+        this.songIndex++;
+  
+        if (this.songIndex > listMusic.length - 1) {
+      this.songIndex = 0;
+        }
+  
+        this.loadSong(listMusic[this.songIndex]);
+    }
+  // prev song
+    prevSong() {
+        this.songIndex--;
+  
+        if (this.songIndex < 0) {
+      this.songIndex = listMusic.length - 1;
+      }
+  
+        this.loadSong(listMusic[this.songIndex]);
+    }
 }
 
 //format time
