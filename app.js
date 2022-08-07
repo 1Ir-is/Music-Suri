@@ -27,8 +27,6 @@ const listMusic = [
     {song: "Haru Haru"           , author: "BIG BANG"},
     {song: "Gee"                 , author: "Girls' Generation"},
     {song: "Latata"              , author: "(G)I-DLE"},
-    {song: "Thủy Triều (潮汐)"   , author: "Pho Mong Dong"},
-    {song: "Xuất Sơn / 出山"     , author: "Hoa Chúc, Vương Thắng Nam"},
   ];
 
   class UI{
