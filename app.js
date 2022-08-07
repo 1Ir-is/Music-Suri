@@ -45,4 +45,28 @@ const listMusic = [
     hidePlayListBox() {
         playListBox.classList.remove('active');
     }
+
+    // load detail song when page loaded
+    loadSong(music) {
+    audio.src = `music/${music.song}.mp3`;
+
+    this.getDuration(audio).then((time) => {
+      thumbnailSong.src = `image/${music.song}.jpg`;
+      nameSong.textContent = music.song;
+      author.textContent = music.author;
+      timeSong.textContent = time;
+      thumbnailSong.classList.add('rotate-ani');
+    });
+ }
+
+    //get duration song
+    getDuration(music) {
+    return new Promise(function (resolve) {
+      music.addEventListener('loadedmetadata', function () {
+        const time = formatTime(music.duration);
+
+        resolve(time);
+      });
+    });
+  }
 }
