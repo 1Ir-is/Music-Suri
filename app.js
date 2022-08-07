@@ -162,7 +162,59 @@ const listMusic = [
         this.playSong();
         this.hidePlayListBox();
     }
+}
 
+document.addEventListener("DOMContentLoaded", eventListeners);
+
+function eventListeners() {
+  const ui = new UI();
+  // load song
+  ui.loadSong(listMusic[ui.songIndex]);
+  // handle set list song
+  ui.setSongs();
+  // handle show playlist
+  btnPlayList.addEventListener("click", function () {
+    ui.showPlayListBox();
+  });
+  // handle hide playlist
+  btnHome.addEventListener("click", function () {
+    ui.hidePlayListBox();
+  });
+  // play/pause song
+  btnPlay.addEventListener("click", function () {
+    if (musicContent.classList.contains("playing")) {
+      ui.pauseSong();
+    } else {
+      ui.playSong();
+    }
+  });
+  // update progress
+  audio.addEventListener("timeupdate", function (e) {
+    ui.updateProgress(e);
+  });
+  // set progress
+  progress.addEventListener("click", function (e) {
+    ui.setProgress(e);
+  });
+  // previous song
+  btnBack.addEventListener("click", function () {
+    ui.prevSong();
+    ui.playSong();
+  });
+  // forward song
+  btnForward.addEventListener("click", function () {
+    ui.nextSong();
+    ui.playSong();
+  });
+  // end song
+  audio.addEventListener("ended", function () {
+    ui.nextSong();
+    ui.playSong();
+  });
+  // select song
+  songs.addEventListener("click", function (e) {
+    ui.selectSong(e);
+  });
 }
 
 //format time
