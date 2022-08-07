@@ -30,3 +30,19 @@ const listMusic = [
     {song: "Thủy Triều (潮汐)"   , author: "Pho Mong Dong"},
     {song: "Xuất Sơn / 出山"     , author: "Hoa Chúc, Vương Thắng Nam"},
   ];
+
+  class UI{
+    constructor() {
+        this.songIndex = 0; //This class contains a constructor 
+        //                  //that holds the song position in the list as this.songIndex = 0 and it also holds all the method for the music player.
+    }
+
+     // show playlist
+     showPlayListBox() {
+        playListBox.classList.add('active');
+    }
+    // hide playlist
+    hidePlayListBox() {
+        playListBox.classList.remove('active');
+    }
+}
