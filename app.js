@@ -27,9 +27,9 @@ const listMusic = [
     {song: "Haru Haru"           , author: "BIG BANG"},
     {song: "Gee"                 , author: "Girls' Generation"},
     {song: "Latata"              , author: "(G)I-DLE"},
-  ];
+];
 
-  class UI{
+class UI{
     constructor() {
         this.songIndex = 0; //This class contains a constructor 
         //                  //that holds the song position in the list as this.songIndex = 0 and it also holds all the method for the music player.
@@ -69,66 +69,59 @@ const listMusic = [
     }
 
    // set list song
-   async setSongs() {
+    async setSongs() {
         songs.innerHTML = '';
-
-     for (let i = 0; i < listMusic.length; i++) {
-      const music = new Audio(`music/${listMusic[i].song}.mp3`);
-      const time = await this.getDuration(music);
-
-      songs.insertAdjacentHTML(
-        'beforeend',
-        `<div class="song-info">
-          <div class="left">
-            <span class="name-song">${listMusic[i].song}</span>
-            <span class="author">${listMusic[i].author}</span>
-          </div>
-          <div class="right">
-            <span class="minutes">${time}</span>
-          </div>
-        </div>`
-      );
+        for (let i = 0; i < listMusic.length; i++) {
+        const music = new Audio(`music/${listMusic[i].song}.mp3`);
+        const time = await this.getDuration(music);
+                songs.insertAdjacentHTML(
+                'beforeend',
+                `<div class="song-info">
+                    <div class="left">
+                        <span class="name-song">${listMusic[i].song}</span>
+                        <span class="author">${listMusic[i].author}</span>
+                    </div>
+                    <div class="right">
+                        <span class="minutes">${time}</span>
+                    /div>
+                </div>`
+            );
+        }
     }
-  }
 
     // play song
-  playSong() {
-    musicContent.classList.add('playing');
-    thumbnailSong.style.animationPlayState = 'running';
-    btnPlay.querySelector('.fas').classList.remove('fa-play');
-    btnPlay.querySelector('.fas').classList.add('fa-pause');
+    playSong() {
+        musicContent.classList.add('playing');
+        thumbnailSong.style.animationPlayState = 'running';
+        btnPlay.querySelector('.fas').classList.remove('fa-play');
+        btnPlay.querySelector('.fas').classList.add('fa-pause');
+        audio.play();
+    }
 
-    audio.play();
-  }
-
-  // pause song
+    // pause song
     pauseSong() {
-    musicContent.classList.remove('playing');
-    thumbnailSong.style.animationPlayState = 'paused';
-    btnPlay.querySelector('.fas').classList.add('fa-play');
-    btnPlay.querySelector('.fas').classList.remove('fa-pause');
+        musicContent.classList.remove('playing');
+        thumbnailSong.style.animationPlayState = 'paused';
+        btnPlay.querySelector('.fas').classList.add('fa-play');
+        btnPlay.querySelector('.fas').classList.remove('fa-pause');
+        audio.pause();
+    }
   
-    audio.pause();
-  }
-  
-  // next song
+    // next song
     nextSong() {
         this.songIndex++;
-  
         if (this.songIndex > listMusic.length - 1) {
       this.songIndex = 0;
         }
-  
         this.loadSong(listMusic[this.songIndex]);
     }
-  // prev song
+
+    // prev song
     prevSong() {
         this.songIndex--;
-  
         if (this.songIndex < 0) {
       this.songIndex = listMusic.length - 1;
       }
-  
         this.loadSong(listMusic[this.songIndex]);
     }
 
@@ -162,57 +155,70 @@ const listMusic = [
     }
 }
 
+// Create an event will be running when the page has finished loading.
 document.addEventListener("DOMContentLoaded", eventListeners);
 
 function eventListeners() {
-  const ui = new UI();
-  // load song
-  ui.loadSong(listMusic[ui.songIndex]);
-  // handle set list song
-  ui.setSongs();
-  // handle show playlist
-  btnPlayList.addEventListener("click", function () {
-    ui.showPlayListBox();
-  });
-  // handle hide playlist
-  btnHome.addEventListener("click", function () {
-    ui.hidePlayListBox();
-  });
-  // play/pause song
-  btnPlay.addEventListener("click", function () {
-    if (musicContent.classList.contains("playing")) {
-      ui.pauseSong();
-    } else {
-      ui.playSong();
-    }
-  });
-  // update progress
-  audio.addEventListener("timeupdate", function (e) {
-    ui.updateProgress(e);
-  });
-  // set progress
-  progress.addEventListener("click", function (e) {
-    ui.setProgress(e);
-  });
-  // previous song
-  btnBack.addEventListener("click", function () {
-    ui.prevSong();
-    ui.playSong();
-  });
-  // forward song
-  btnForward.addEventListener("click", function () {
-    ui.nextSong();
-    ui.playSong();
-  });
-  // end song
-  audio.addEventListener("ended", function () {
-    ui.nextSong();
-    ui.playSong();
-  });
-  // select song
-  songs.addEventListener("click", function (e) {
-    ui.selectSong(e);
-  });
+    const ui = new UI();
+
+    // load song
+        ui.loadSong(listMusic[ui.songIndex]);
+
+    // handle set list song
+        ui.setSongs();
+
+    // handle show playlist
+        btnPlayList.addEventListener("click", function () {
+        ui.showPlayListBox();
+    });
+
+    // handle hide playlist
+        btnHome.addEventListener("click", function () {
+        ui.hidePlayListBox();
+    });
+
+    // play/pause song
+        btnPlay.addEventListener("click", function () {
+        if (musicContent.classList.contains("playing")) {
+        ui.pauseSong();
+        }
+        else {
+        ui.playSong();
+        }
+    });
+
+    // update progress
+        audio.addEventListener("timeupdate", function (e) {
+        ui.updateProgress(e);
+    });
+
+    // set progress
+        progress.addEventListener("click", function (e) {
+        ui.setProgress(e);
+    });
+
+    // previous song
+        btnBack.addEventListener("click", function () {
+        ui.prevSong();
+        ui.playSong();
+    });
+
+    // forward song
+        btnForward.addEventListener("click", function () {
+        ui.nextSong();
+        ui.playSong();
+    });
+
+    // end song
+        audio.addEventListener("ended", function () {
+        ui.nextSong();
+        ui.playSong();
+    });
+
+    // select song
+        songs.addEventListener("click", function (e) {
+        ui.selectSong(e);
+    });
 }
 
 //format time

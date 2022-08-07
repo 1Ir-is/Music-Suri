@@ -85,27 +85,32 @@ button{
 .state {
     color: rgb(247, 51, 51);
     font-size: 1.8rem;
-  }
-  .info-song {
+}
+
+.info-song {
     margin-top: 1.25rem;
     margin-bottom: 2rem;
     text-align: center;
-  }
-  .song-name {
+}
+
+.song-name {
     color: #524850;
     font-weight: 700;
     font-size: 2.4rem;
-  }
-  .info-song .author {
+}
+
+.info-song .author {
     margin-top: 1rem;
     font-size: 1.8rem;
     color: #ada6aa;
-  }
-  .bar-song {
+}
+
+.bar-song {
     display: flex;
     align-items: center;
-  }
-  .progress {
+}
+
+.progress {
     margin-left: 2rem;
     margin-right: 2rem;
     width: 100%;
@@ -115,32 +120,33 @@ button{
     border-radius: 5px;
     background: #65fcce;
     cursor: pointer;
-  }
-  .progress-bar {
+}
+
+.progress-bar {
     position: absolute;
     top: 0;
     left: 0;
     width: 0;
     height: 100%;
     background-color: rgb(243 60 110);
-  }
-  
-  .song-footer {
+}
+
+.song-footer {
     display: flex;
     align-items: center;
     margin-top: 4rem;
     justify-content: center;
-  }
-  .back,
-  .forward {
+}
+  
+.back,.forward {
     border-radius: 50%;
     width: 4rem;
     color: #72646f;
     height: 4rem;
     font-size: 1.8rem;
-  }
+}
   
-  .play-song {
+.play-song {
     width: 5.5rem;
     height: 5.5rem;
     margin: 0 2rem;
@@ -148,17 +154,21 @@ button{
     color: #736570;
     border-radius: 50%;
     box-shadow: 0 5px 15px rgb(236, 186, 186);
-  }
-  i {
+}
+
+i {
     pointer-events: none;
-  }
-  .play-song i {
+}
+
+.play-song i {
     font-size: 1.8rem;
-  }
-  .play-song i.fa-play {
+}
+
+.play-song i.fa-play {
     margin-left: 5px;
-  }
-  .play-list {
+}
+
+.play-list {
     display: flex;
     align-items: center;
     width: 100%;
@@ -167,12 +177,13 @@ button{
     font-weight: 700;
     color: #524850;
     margin-bottom: 3rem;
-  }
-  .play-list i {
+}
+
+.play-list i {
     margin-left: 1rem;
-  }
+}
   
-  .playlist-box {
+.playlist-box {
     background: rgb(255, 255, 255);
     position: absolute;
     top: 0;
@@ -186,20 +197,21 @@ button{
     visibility: hidden;
     transform: scale(1.1);
     transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
-  }
-  .playlist-box.active {
+}
+
+.playlist-box.active {
     opacity: 1;
     visibility: visible;
     transform: scale(1);
-  }
+}
 
- /* list song */
 .list-song {
     overflow-y: auto;
     height: 30rem;
     padding: 1rem;
-  }
-  .list-song .song-info {
+}
+
+.list-song .song-info {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -208,32 +220,39 @@ button{
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 3px;
     transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
-  }
-  .song-info:hover {
+}
+
+.song-info:hover {
     background: rgb(212, 212, 212);
     border-color: transparent;
-  }
-  .left {
+}
+
+.left {
     pointer-events: none;
     flex: 1 0 70%;
-  }
-  .right {
+}
+
+.right {
     pointer-events: none;
     flex: 0 1 10rem;
     text-align: right;
-  }
-  .left .author {
+}
+
+.left .author {
     margin-top: 3px;
     color: rgb(158, 148, 148);
-  }
-  .song-info .left span {
+}
+
+.song-info .left span {
     display: block;
-  }
-  .playlist-box .header {
+}
+
+.playlist-box .header {
     position: relative;
     margin-bottom: 3rem;
-  }
-  .header .text {
+}
+
+.header .text {
     position: absolute;
     top: 0;
     left: 50%;
@@ -241,5 +260,5 @@ button{
     font-size: 1.8rem;
     font-weight: 700;
     color: rgb(53, 53, 53);
-  }
+}
   
