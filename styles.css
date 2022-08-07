@@ -69,6 +69,19 @@ button{
     object-fit: cover;
 }
 
+.thumbnail-song img.rotate-ani {
+    animation: rotate 5s linear infinite;
+    animation-play-state: paused;
+}
+@keyframes rotate {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 .state {
     color: rgb(247, 51, 51);
     font-size: 1.8rem;
