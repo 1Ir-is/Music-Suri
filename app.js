@@ -153,6 +153,16 @@ const listMusic = [
         audio.currentTime = (width * duration) / progress.clientWidth;
     }
 
+    // select song in playlist
+    selectSong(e) {
+        const target = e.target;
+        const nameSong = target.querySelector('.name-song').textContent;
+        const song = listMusic.find((audio) => audio.song === nameSong);
+        this.loadSong(song);
+        this.playSong();
+        this.hidePlayListBox();
+    }
+
 }
 
 //format time
