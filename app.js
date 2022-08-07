@@ -133,6 +133,26 @@ const listMusic = [
   
         this.loadSong(listMusic[this.songIndex]);
     }
+
+     // update progress
+    updateProgress(e) {
+        const { currentTime, duration } = e.srcElement;
+        const percentWidth = (currentTime / duration) * 100;
+        progressBar.style.width = `${percentWidth}%`;
+        const time = formatTime(currentTime);
+        currentTimeDisplay.textContent = time;
+    }
+
+    // set progress
+    setProgress(e) {
+        const width = e.offsetX;
+        const progress = e.currentTarget;
+        const progressBarWidth = (width / progress.clientWidth) * 100;
+        progressBar.style.width = `${progressBarWidth}%`;
+        let { duration } = audio;
+        audio.currentTime = (width * duration) / progress.clientWidth;
+    }
+
 }
 
 //format time
