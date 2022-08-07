@@ -38,7 +38,7 @@ const listMusic = [
     }
 
      // show playlist
-     showPlayListBox() {
+    showPlayListBox() {
         playListBox.classList.add('active');
     }
     // hide playlist
@@ -48,33 +48,33 @@ const listMusic = [
 
     // load detail song when page loaded
     loadSong(music) {
-    audio.src = `music/${music.song}.mp3`;
+        audio.src = `music/${music.song}.mp3`;
 
-    this.getDuration(audio).then((time) => {
-      thumbnailSong.src = `image/${music.song}.jpg`;
-      nameSong.textContent = music.song;
-      author.textContent = music.author;
-      timeSong.textContent = time;
-      thumbnailSong.classList.add('rotate-ani');
-    });
- }
+        this.getDuration(audio).then((time) => {
+            thumbnailSong.src = `image/${music.song}.jpg`;
+            nameSong.textContent = music.song;
+            author.textContent = music.author;
+            timeSong.textContent = time;
+            thumbnailSong.classList.add('rotate-ani');
+        });
+    }
 
     //get duration song
     getDuration(music) {
-    return new Promise(function (resolve) {
-      music.addEventListener('loadedmetadata', function () {
-        const time = formatTime(music.duration);
+       return new Promise(function (resolve) {
+            music.addEventListener('loadedmetadata', function () {
+            const time = formatTime(music.duration);
 
-        resolve(time);
-      });
-    });
-  }
+            resolve(time);
+        });
+        });
+    }
 
    // set list song
    async setSongs() {
-    songs.innerHTML = '';
+        songs.innerHTML = '';
 
-    for (let i = 0; i < listMusic.length; i++) {
+     for (let i = 0; i < listMusic.length; i++) {
       const music = new Audio(`music/${listMusic[i].song}.mp3`);
       const time = await this.getDuration(music);
 
@@ -93,7 +93,26 @@ const listMusic = [
     }
   }
 
+    // play song
+  playSong() {
+    musicContent.classList.add('playing');
+    thumbnailSong.style.animationPlayState = 'running';
+    btnPlay.querySelector('.fas').classList.remove('fa-play');
+    btnPlay.querySelector('.fas').classList.add('fa-pause');
+
+    audio.play();
+  }
+
+  // pause song
+    pauseSong() {
+    musicContent.classList.remove('playing');
+    thumbnailSong.style.animationPlayState = 'paused';
+    btnPlay.querySelector('.fas').classList.add('fa-play');
+    btnPlay.querySelector('.fas').classList.remove('fa-pause');
   
+    audio.pause();
+  }
+
 }
 
 //format time
